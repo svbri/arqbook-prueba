@@ -429,6 +429,11 @@ hr {
 
 .guide-item {
     font-weight: 600;
+    color: #9e0000;
+}
+
+.guide-item a:visited {
+    color: #9e0000;
 }
 
 .faq-mail {
