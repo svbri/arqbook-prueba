@@ -431,6 +431,16 @@ hr {
     font-weight: 600;
 }
 
+.faq-mail {
+    font-weight: 900;
+    color: #a4c6d4;
+}
+
+.faq-mail:hover {
+    text-decoration: underline;
+    color: #c54475;
+}
+
 /* Recomendaciones */
 table {
     border-collapse: collapse;
