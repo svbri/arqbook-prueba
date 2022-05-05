@@ -9,38 +9,60 @@ window.onload = function () {
         navMenu.classList.toggle("active");
     }
 
-    // const arrowBtn = document.querySelector(".fa-circle-chevron-down");
-    // const faqContent = document.querySelector("#item-content");
-    // arrowBtn.addEventListener("click", showContent);
+    const btnPrev = document.getElementById("button-prev");
+    const btnNext = document.getElementById("button-next");
+    const itemTrack = document.getElementById("track");
+    const itemList = document.getElementById("slick-list");
+    const item = document.querySelectorAll(".slick");
 
-    // function showContent() {
-    //     faqContent.classList.toggle("hide");
-    // }
+    const itemWidth = item[0].offsetWidth;
 
-    // $(document).ready(function () {
+    btnPrev.onclick = () => move(1);
+    btnNext.onclick = () => move(2);
 
-    //     $('.fa-circle-chevron-down').click(function () {
+    function move(value) {
+        const trackWidth = itemTrack.offsetWidth;
+        const listWidth = itemList.offsetWidth;
 
-    //         if ($(this).parent().is('.show')) {
-    //             $(this).closest('.faq-item').find('.item-content-container').animate({ 'height': '0' }, 500);
-    //             $(this).closest('.faq-item').removeClass('show');
+        itemTrack.style.left == "" ? leftPosition = itemTrack.style.left = 0 : leftPosition = parseFloat(itemTrack.style.left.slice(0, -2) * -1);
 
-    //         } else {
-    //             const newHeight = $(this).closest('.faq-item').find('#item-content').height() + 'px';
-    //             $(this).closest('.faq-item').find('.item-content-container').animate({ 'height': newHeight }, 500);
-    //             $(this).closest('.faq-item').addClass('show');
-    //         }
-    //     });
-    // });
+        if (leftPosition < (trackWidth - listWidth) && value == 2) {
+            itemTrack.style.left = `${-1  * (leftPosition + itemWidth)}px`;
+        } else if (leftPosition > 0 && value == 1) {
+            itemTrack.style.left = `${-1  * (leftPosition - itemWidth)}px`;
+        }
+    }
 
-    // const faqBtn = document.querySelector(".fa-circle-chevron-down");
-    // const faqItem = document.querySelector(".faq-item");
-    // const faqContent = document.querySelector("#item-content");
-    // const faqContentContainer = document.querySelector(".item-content-container");
+/*     function move (event) {
+        const btn = event.currentTarget;
+        const slickList = event.currentTarget.parentNode;
+        const track = event.currentTarget.parentNode.querySelector('#track');
+        const slick = track.querySelectorAll('.slick');
+    
+        const slickWidth = slick[0].offsetWidth;
+        
+        const trackWidth = track.offsetWidth;
+        const listWidth = slickList.offsetWidth;
+    
+        track.style.left == ""  ? leftPosition = track.style.left = 0 : leftPosition = parseFloat(track.style.left.slice(0, -2) * -1);
+    
+        btn.dataset.button == "button-prev" ? prevAction(leftPosition,slickWidth,track) : nextAction(leftPosition,trackWidth,listWidth,slickWidth,track);
+    }
+    
+    let prevAction = (leftPosition,slickWidth,track) => {
+        if(leftPosition > 0) {
+            console.log("entro 2")
+            track.style.left = `${-1 * (leftPosition - slickWidth)}px`;
+        }
+    }
+    
+    let nextAction = (leftPosition,trackWidth,listWidth,slickWidth,track) => {
+        if(leftPosition < (trackWidth - listWidth)) {
+            track.style.left = `${-1 * (leftPosition + slickWidth)}px`;
+        }
+    }
 
-    // faqBtn.addEventListener("click", showContent);
-
-    // function showContent() {
-    //     if (faq)
-    // }
+    btnPrev.onclick = () => move(1);
+    btnNext.onclick = () => move(2);
+ */
 }
